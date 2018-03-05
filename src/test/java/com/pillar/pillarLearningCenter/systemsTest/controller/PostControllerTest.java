@@ -10,8 +10,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class PostControllerTest {
 
+
     @Test
-    public void test() {
+    public void testControllerGetsAListOfPosts() {
+//        mock out response for getAllPosts()
+//        assign to temporary variable
         assert true;
+    }
+
+    @Test
+    public void testControllerSetsTitleUsingTheFirstPostTitle(){
+        assert false;
     }
 }
