@@ -1,2 +1,9 @@
-<h1>Title</h1>
-<p>This is the content.</p>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+    <body>
+        <h1 th:text="${post.title}"></h1>
+        <p th:text="${post.content}"></p>
+    </body>
+</html>
