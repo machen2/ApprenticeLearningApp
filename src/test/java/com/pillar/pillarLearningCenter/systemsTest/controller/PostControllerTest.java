@@ -36,7 +36,22 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerSetsTitleUsingTheFirstPostTitle(){
-        assert false;
+    public void testControllerSetsTitleUsingTheLastPostTitle(){
+        Post onePost = new Post();
+        onePost.setTitle("Title One");
+        Post twoPost = new Post();
+        twoPost.setTitle("Title Two");
+        entityManager.persist(onePost);
+        entityManager.persist(twoPost);
+        entityManager.flush();
+
+        postController.posts();
+
+        assert postController.title.equals(twoPost.getTitle());
+    }
+
+    @Test
+    public void testControllerSetsModelTitleToLastPostTitle() {
+        
     }
 }

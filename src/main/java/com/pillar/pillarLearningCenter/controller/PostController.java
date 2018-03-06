@@ -17,10 +17,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class PostController {
 
     public List<Post> allPosts;
+    public String title;
 
     @RequestMapping("/posts")
     public String posts() {
         allPosts = getAllPosts();
+        title = allPosts.get(allPosts.size() - 1).getTitle();
         return "posts";
     }
 
