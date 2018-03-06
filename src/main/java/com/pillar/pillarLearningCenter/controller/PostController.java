@@ -15,16 +15,18 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 //@RequestMapping(value = "/posts")
 public class PostController {
+
+    public List<Post> allPosts;
+
     @RequestMapping("/posts")
-    public String index() {
+    public String posts() {
+        allPosts = getAllPosts();
         return "posts";
     }
 
     @Autowired
     private PostService postService;
 
-    @RequestMapping(value = "all", method = GET)
-    @ResponseBody
     public List<Post> getAllPosts() {
          return postService.getAllPosts();
     }

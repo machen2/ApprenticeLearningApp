@@ -40,15 +40,15 @@ public class PostViewTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-
-    @Test
-    public void testCreateClientSuccessfully() throws Exception {
-        List<Post> expected = new ArrayList<>();
-
-        given(postServiceMock.getAllPosts()).willReturn(expected);
-        mockMvc.perform(get("/posts")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect((ResultMatcher)jsonPath("$.title", is("Title")))
-                .andExpect((ResultMatcher)jsonPath("$.content", is("This is the content.")));
-    }
+//
+//    @Test
+//    public void testCreateClientSuccessfully() throws Exception {
+//        List<Post> expected = new ArrayList<>();
+//
+//        given(postServiceMock.getAllPosts()).willReturn(expected);
+//        mockMvc.perform(get("/posts")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect((ResultMatcher)jsonPath("$.title", is("Title")))
+//                .andExpect((ResultMatcher)jsonPath("$.content", is("This is the content.")));
+//    }
 }
