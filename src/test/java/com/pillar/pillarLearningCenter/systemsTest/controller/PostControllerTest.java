@@ -52,4 +52,22 @@ public class PostControllerTest {
 
         assert actual.getTitle().equals(twoPost.getTitle());
     }
+
+    @Test
+    public void testControllerSetsModelContentToLastPostContent() {
+        Post onePost = new Post();
+        onePost.setContent("Content One");
+        Post twoPost = new Post();
+        twoPost.setContent("Content Two");
+        entityManager.persist(onePost);
+        entityManager.persist(twoPost);
+        entityManager.flush();
+
+        postController.posts(model);
+
+        Post actual = (Post) model.asMap().get("postList");
+
+        assert actual.getContent().equals(twoPost.getContent());
+    }
+
 }
