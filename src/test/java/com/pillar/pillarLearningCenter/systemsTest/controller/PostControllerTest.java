@@ -37,21 +37,6 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerSetsTitleUsingTheLastPostTitle(){
-        Post onePost = new Post();
-        onePost.setTitle("Title One");
-        Post twoPost = new Post();
-        twoPost.setTitle("Title Two");
-        entityManager.persist(onePost);
-        entityManager.persist(twoPost);
-        entityManager.flush();
-
-        postController.posts(model);
-
-        assert postController.title.equals(twoPost.getTitle());
-    }
-
-    @Test
     public void testControllerSetsModelTitleToLastPostTitle() {
         Post onePost = new Post();
         onePost.setTitle("Title One");
@@ -63,7 +48,7 @@ public class PostControllerTest {
 
         postController.posts(model);
 
-        Post actual = (Post) model.asMap().get("posts");
+        Post actual = (Post) model.asMap().get("postList");
 
         assert actual.getTitle().equals(twoPost.getTitle());
     }
