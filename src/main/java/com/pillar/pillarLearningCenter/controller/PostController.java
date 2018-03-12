@@ -14,12 +14,15 @@ import java.util.List;
 public class PostController {
 
     public List<Post> allPosts;
+    public Post lastPost;
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public String posts(Model model) {
         allPosts = getAllPosts();
-        Post lastPost = allPosts.get(allPosts.size() - 1);
-        model.addAttribute("postList", lastPost);
+        if (allPosts.size() != 0) {
+            lastPost = allPosts.get(allPosts.size() - 1);
+            model.addAttribute("postList", lastPost);
+        }
         return "posts";
     }
 

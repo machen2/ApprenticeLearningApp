@@ -73,7 +73,7 @@ public class PillarLearningCenterApplicationTests {
     }
 
 	@Test
-    public void whenGetPostWithTitle_thenPostIsReturned() {
+    public void whenGetOnePost_thenPostIsReturned() {
 	    Post post = new Post();
 	    entityManager.persist(post);
 	    entityManager.flush();

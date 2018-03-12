@@ -69,5 +69,4 @@ public class PostControllerTest {
 
         assert actual.getContent().equals(twoPost.getContent());
     }
-
 }
