@@ -1,0 +1,12 @@
+%CONTEXT
+postList = new com.pillar.pillarLearningCenter.model.Post()
+postList.title = 'Title'
+postList.content = 'Content'
+%INPUT (classpath:templates/posts.html)
+%OUTPUT
+<html>
+    <div>
+        <h1>Title</h1>
+        <p>Content</p>
+    </div>
+</html>
