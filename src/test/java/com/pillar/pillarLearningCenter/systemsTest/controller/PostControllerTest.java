@@ -39,23 +39,6 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerSetsModelContentToLastPostContent() {
-        Post onePost = new Post();
-        onePost.setContent("Content One");
-        Post twoPost = new Post();
-        twoPost.setContent("Content Two");
-        entityManager.persist(onePost);
-        entityManager.persist(twoPost);
-        entityManager.flush();
-
-        postController.posts(model);
-
-        Post actual = (Post) model.asMap().get("postList");
-
-        assert actual.getContent().equals(twoPost.getContent());
-    }
-
-    @Test
     public void testControllerSetsModelWithMultipleTitles() {
         Post onePost = new Post();
         onePost.setTitle("Title One");
@@ -71,5 +54,23 @@ public class PostControllerTest {
 
         assert actual.get(0).getTitle().equals(onePost.getTitle());
         assert actual.get(1).getTitle().equals(twoPost.getTitle());
+    }
+
+    @Test
+    public void testControllerSetsModelWithMultipleContents() {
+        Post onePost = new Post();
+        onePost.setContent("Content One");
+        Post twoPost = new Post();
+        twoPost.setContent("Content Two");
+        entityManager.persist(onePost);
+        entityManager.persist(twoPost);
+        entityManager.flush();
+
+        postController.posts(model);
+
+        List<Post> actual = (List<Post>) model.asMap().get("postList");
+
+        assert actual.get(0).getContent().equals(onePost.getContent());
+        assert actual.get(1).getContent().equals(twoPost.getContent());
     }
 }
