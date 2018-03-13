@@ -29,7 +29,6 @@ dependencies {
 	compile(group: 'com.h2database', name: 'h2', version: '1.4.194')
 
 	compile(group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf')
-	compile(group: 'org.jsoup', name: 'jsoup', version: '1.8.3')
 
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
