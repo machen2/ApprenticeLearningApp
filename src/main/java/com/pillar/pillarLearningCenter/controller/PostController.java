@@ -18,10 +18,7 @@ public class PostController {
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public String posts(Model model) {
         allPosts = getAllPosts();
-        if (allPosts.size() != 0) {
-            Post lastPost = allPosts.get(allPosts.size() - 1);
-            model.addAttribute("postList", lastPost);
-        }
+        model.addAttribute("postList", allPosts);
         return "posts";
     }
 
