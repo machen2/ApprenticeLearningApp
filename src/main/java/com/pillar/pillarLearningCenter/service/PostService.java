@@ -10,5 +10,6 @@ public interface PostService {
     public Post getPostByContent(String content);
 
     public List<Post> getAllPosts();
+
     public Post getPostById(Long id);
 }
