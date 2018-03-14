@@ -35,7 +35,7 @@ public class PostViewTest {
     }
 
     @Test
-    public void testHtmlView(){
+    public void testPostsHtmlView(){
         TestExecutor testExecutor = new TestExecutor();
         testExecutor.execute("classpath:posts/posts.thtest");
         assertTrue(testExecutor.isAllOK());
