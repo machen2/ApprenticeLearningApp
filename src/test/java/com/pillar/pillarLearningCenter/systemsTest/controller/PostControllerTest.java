@@ -11,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class PostControllerTest {
@@ -37,7 +39,7 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerSetsModelTitleToLastPostTitle() {
+    public void testControllerSetsModelWithMultipleTitles() {
         Post onePost = new Post();
         onePost.setTitle("Title One");
         Post twoPost = new Post();
@@ -48,13 +50,14 @@ public class PostControllerTest {
 
         postController.posts(model);
 
-        Post actual = (Post) model.asMap().get("postList");
+        List<Post> actual = (List<Post>) model.asMap().get("postList");
 
-        assert actual.getTitle().equals(twoPost.getTitle());
+        assert actual.get(0).getTitle().equals(onePost.getTitle());
+        assert actual.get(1).getTitle().equals(twoPost.getTitle());
     }
 
     @Test
-    public void testControllerSetsModelContentToLastPostContent() {
+    public void testControllerSetsModelWithMultipleContents() {
         Post onePost = new Post();
         onePost.setContent("Content One");
         Post twoPost = new Post();
@@ -65,8 +68,9 @@ public class PostControllerTest {
 
         postController.posts(model);
 
-        Post actual = (Post) model.asMap().get("postList");
+        List<Post> actual = (List<Post>) model.asMap().get("postList");
 
-        assert actual.getContent().equals(twoPost.getContent());
+        assert actual.get(0).getContent().equals(onePost.getContent());
+        assert actual.get(1).getContent().equals(twoPost.getContent());
     }
 }
