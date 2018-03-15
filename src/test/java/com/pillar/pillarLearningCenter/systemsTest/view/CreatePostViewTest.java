@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.thymeleaf.testing.templateengine.engine.TestExecutor;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -35,6 +34,6 @@ public class CreatePostViewTest {
     public void testCreateNewPostHtmlView(){
         TestExecutor testExecutor = new TestExecutor();
         testExecutor.execute("classpath:posts/new.thtest");
-        assertFalse(testExecutor.isAllOK());
+        assertTrue(testExecutor.isAllOK());
     }
 }
