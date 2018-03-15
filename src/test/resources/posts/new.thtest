@@ -1,0 +1,6 @@
+%CONTEXT
+%INPUT (classpath:templates/new.html)
+%OUTPUT
+<html>
+    <h1>Create a New Post!</h1>
+</html>
