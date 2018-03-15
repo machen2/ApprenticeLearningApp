@@ -22,6 +22,11 @@ public class PostController {
         return "posts";
     }
 
+    @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
+    public String postsNew() {
+        return "new";
+    }
+
     @Autowired
     private PostService postService;
 
