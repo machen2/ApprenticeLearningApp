@@ -31,7 +31,7 @@ public class CreatePostViewTest {
     }
 
     @Test
-    public void testCreateNewPostHtmlView(){
+    public void testViewHasSubmitButton(){
         TestExecutor testExecutor = new TestExecutor();
         testExecutor.execute("classpath:posts/new.thtest");
         assertTrue(testExecutor.isAllOK());
