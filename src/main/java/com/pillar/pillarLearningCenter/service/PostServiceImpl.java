@@ -31,4 +31,6 @@ public class PostServiceImpl implements PostService {
     public Post getPostById(Long id) {
         return postRepository.getOne(id);
     }
+
+    public void createPost(Post post){ postRepository.save(post); }
 }

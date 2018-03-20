@@ -12,4 +12,6 @@ public interface PostService {
     public List<Post> getAllPosts();
 
     public Post getPostById(Long id);
+
+    public void createPost(Post post);
 }

@@ -35,7 +35,7 @@ public class PostControllerTest {
 
         postController.posts(model);
 
-        assert postController.allPosts.size() == 2;
+        assert postController.getAllPosts().size() == 2;
     }
 
     @Test
@@ -73,4 +73,15 @@ public class PostControllerTest {
         assert actual.get(0).getContent().equals(onePost.getContent());
         assert actual.get(1).getContent().equals(twoPost.getContent());
     }
+
+//    @Test
+//    public void testControllerCreatesNewPost(){
+//        Post onePost = new Post();
+//        onePost.setTitle("Title One");
+//        onePost.setContent("Content One");
+//        model.addAttribute("Title", onePost.getTitle());
+//        model.addAttribute("Content", onePost.getContent());
+//        //postController.submitData(model);
+//    }
+
 }
