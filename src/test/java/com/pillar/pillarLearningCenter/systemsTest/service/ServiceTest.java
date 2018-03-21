@@ -25,6 +25,24 @@ public class ServiceTest {
     private TestEntityManager entityManager;
 
     @Test
+    public void testGetAllPosts(){
+        Post post = new Post();
+        post.setTitle("Title One");
+        post.setContent("Content is Here");
+        Post post2 = new Post();
+        post2.setTitle("Title 2");
+        post2.setContent("Content 2 is Here");
+        entityManager.persist(post);
+        entityManager.persist(post2);
+        entityManager.flush();
+
+        List<Post> postList = postService.getAllPosts();
+
+        assertEquals(postList.get(0), post);
+        assertEquals(postList.get(1), post2);
+    }
+
+    @Test
     public void testCreatePost(){
         Post post = new Post();
         post.setTitle("Title One");
