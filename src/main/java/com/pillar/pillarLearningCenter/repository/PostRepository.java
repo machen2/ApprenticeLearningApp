@@ -8,8 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long>{
-    public Post findByTitle(String title);
-    public Post findByContent(String content);
-    public Post getOne(Long id);
+    //public Post getOne(Long id);
     public Post save(Post post);
 }

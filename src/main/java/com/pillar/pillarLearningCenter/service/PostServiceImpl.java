@@ -14,23 +14,13 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     @Override
-    public Post getPostByTitle(String title) {
-        return postRepository.findByTitle(title);
-    }
-
-    @Override
-    public Post getPostByContent(String content) {
-        return postRepository.findByContent(content);
-    }
-
-    @Override
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
 
-    public Post getPostById(Long id) {
+    /*public Post getPostById(Long id) {
         return postRepository.getOne(id);
-    }
+    }*/
 
     public void createPost(Post post){ postRepository.save(post); }
 }
