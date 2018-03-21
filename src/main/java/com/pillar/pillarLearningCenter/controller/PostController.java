@@ -13,11 +13,9 @@ import java.util.List;
 @Controller
 public class PostController {
 
-    public List<Post> allPosts;
-
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public String posts(Model model) {
-        allPosts = getAllPosts();
+        List<Post> allPosts = postService.getAllPosts();
         model.addAttribute("postList", allPosts);
         return "posts";
     }
@@ -29,10 +27,6 @@ public class PostController {
 
     @Autowired
     private PostService postService;
-
-    public List<Post> getAllPosts() {
-         return postService.getAllPosts();
-    }
 
     public Post getPostById(Long id) {
         return postService.getPostById(id);

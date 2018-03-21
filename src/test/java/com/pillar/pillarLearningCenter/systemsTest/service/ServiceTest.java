@@ -11,6 +11,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class ServiceTest {
@@ -30,6 +34,7 @@ public class ServiceTest {
 
         Post resultPost = entityManager.find(Post.class, post.getId());
 
-        assert(resultPost != null);
+        assertEquals(resultPost, post);
     }
+
 }

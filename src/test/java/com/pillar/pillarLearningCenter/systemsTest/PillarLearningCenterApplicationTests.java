@@ -63,16 +63,6 @@ public class PillarLearningCenterApplicationTests {
 	}
 
 	@Test
-    public void whenGetAllPosts_thenAllPostsAreReturned() {
-	    entityManager.persist(new Post());
-	    entityManager.persist(new Post());
-	    entityManager.flush();
-
-        List<Post> allPosts = postController.getAllPosts();
-        assertThat(allPosts.size()).isEqualTo(2);
-    }
-
-	@Test
     public void whenGetOnePost_thenPostIsReturned() {
 	    Post post = new Post();
 	    entityManager.persist(post);
