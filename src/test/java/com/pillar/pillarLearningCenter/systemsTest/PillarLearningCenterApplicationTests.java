@@ -16,62 +16,8 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class PillarLearningCenterApplicationTests {
-
-	@Autowired
-	private TestEntityManager entityManager;
-
-	@Autowired
-	private PostRepository postRepository;
-
-	@Autowired
-	private PostController postController;
-
 	@Test
 	public void contextLoads() {
 	}
 
-	@Test
-	public void whenFindByTitle_thenReturnPost() {
-		// given
-		Post alex = new Post();
-		alex.setTitle("Hi Alex");
-		entityManager.persist(alex);
-		entityManager.flush();
-
-		// when
-		Post found = postRepository.findByTitle(alex.getTitle());
-
-		// then
-		assertThat(found.getTitle())
-				.isEqualTo(alex.getTitle());
-	}
-
-	@Test
-	public void whenFindByContent_thenReturnPost() {
-		// given
-		Post expected = new Post();
-		expected.setContent("Hi Alex");
-		entityManager.persist(expected);
-		entityManager.flush();
-
-		// when
-		Post actual = postRepository.findByContent(expected.getContent());
-
-		// then
-		assertThat(actual.getContent())
-				.isEqualTo(expected.getContent());
-	}
-
-	@Test
-    public void whenGetOnePost_thenPostIsReturned() {
-	    Post post = new Post();
-	    entityManager.persist(post);
-	    entityManager.flush();
-
-        // when
-        Post actual = postController.getPostById(post.getId());
-
-        // then
-        assertThat(actual).isEqualTo(post);
-    }
 }
