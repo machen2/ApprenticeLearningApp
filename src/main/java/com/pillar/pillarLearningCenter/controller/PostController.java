@@ -25,6 +25,10 @@ public class PostController {
 
     @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
     public String postsNew() {
+        Post post = new Post();
+        post.setTitle("Dummy Title");
+        post.setContent("Dummy Content");
+        postService.createPost(post);
         return "new";
     }
 

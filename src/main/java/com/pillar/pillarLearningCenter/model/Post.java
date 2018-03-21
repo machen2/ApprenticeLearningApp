@@ -37,4 +37,18 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Post)) {
+            return false;
+        }
+
+        Post post2 = (Post) o;
+        return post2.getId() == this.getId() && post2.getTitle().equals(this.getTitle()) && post2.getContent().equals(this.getContent());
+    }
 }

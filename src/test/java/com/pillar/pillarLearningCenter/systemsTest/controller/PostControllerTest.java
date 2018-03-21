@@ -61,4 +61,13 @@ public class PostControllerTest {
         assertEquals(actual, expected);
     }
 
+    @Test
+    public void testControllerUsesServiceToCreateAPost(){
+        Post post = new Post();
+        post.setTitle("Dummy Title");
+        post.setContent("Dummy Content");
+        postController.postsNew();
+        Mockito.verify(postService).createPost(post);
+    }
+
 }
