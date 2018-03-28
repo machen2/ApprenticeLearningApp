@@ -58,7 +58,7 @@ public class PostControllerTest {
 
         List<Post> actual = (List<Post>) model.asMap().get("postList");
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -67,18 +67,24 @@ public class PostControllerTest {
     }
 
     @Test
-    public void postsNew_shouldUseTheServiceToCreateANewPost_WhenCalled(){
+    public void postsNew_ShouldPopulateModelWithDummyPostData_WhenCalled() {
         Post post = new Post();
         post.setTitle("Dummy Title");
         post.setContent("Dummy Content");
-        postController.postsNew();
-        Mockito.verify(postService).createPost(post);
-    }
+        List<Post> expected = new ArrayList<>();
+        expected.add(post);
+        Mockito.when(postService.getAllPosts()).thenReturn(expected);
 
+        postController.postsNew(model);
+
+        Post actual = (Post) model.asMap().get("post");
+
+        assertEquals(expected.get(0), actual);
+    }
 
     @Test
     public void postsNew_shouldReturnNewRouteString_WhenCalled(){
-        assertEquals("new", postController.postsNew());
+        assertEquals("new", postController.postsNew(model));
     }
 
 }

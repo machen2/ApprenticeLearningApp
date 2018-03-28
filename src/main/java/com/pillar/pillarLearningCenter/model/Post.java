@@ -8,10 +8,13 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public Long id;
 
+    @Column(name = "title")
     public String title;
 
+    @Column(name = "content")
     public String content;
 
     public void setTitle(String title) {
