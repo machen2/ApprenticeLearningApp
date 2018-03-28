@@ -71,8 +71,13 @@ public class PostControllerTest {
     }
 
     @Test
-    public void posts_shouldReturnPostsRoute_whenCalled(){
+    public void posts_shouldReturnPostsRouteString_whenCalled(){
         assertEquals("posts", postController.posts(model));
+    }
+
+    @Test
+    public void postsNew_shouldReturnNewRouteString_WhenCalled(){
+        assertEquals("new", postController.postsNew());
     }
 
 }
