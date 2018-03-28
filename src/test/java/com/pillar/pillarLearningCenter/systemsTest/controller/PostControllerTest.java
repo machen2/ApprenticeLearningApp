@@ -3,6 +3,7 @@ package com.pillar.pillarLearningCenter.systemsTest.controller;
 import com.pillar.pillarLearningCenter.controller.PostController;
 import com.pillar.pillarLearningCenter.model.Post;
 import com.pillar.pillarLearningCenter.service.PostService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class PostControllerTest {
 
     private Model model = new ExtendedModelMap();
 
-    @BeforeMethod
+    @Before
     public void initMocks(){
         MockitoAnnotations.initMocks(this);
     }
