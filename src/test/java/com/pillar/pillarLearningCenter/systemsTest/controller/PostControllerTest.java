@@ -70,4 +70,9 @@ public class PostControllerTest {
         Mockito.verify(postService).createPost(post);
     }
 
+    @Test
+    public void posts_shouldReturnPostsRoute_whenCalled(){
+        assertEquals("posts", postController.posts(model));
+    }
+
 }
