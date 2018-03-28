@@ -44,7 +44,7 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerPopulatesModelDataFromService() {
+    public void posts_ShouldPopulateModelWithPostData_WhenServiceReturnsPostData() {
         Post onePost = new Post();
         onePost.setTitle("Title One");
         Post twoPost = new Post();
@@ -62,7 +62,12 @@ public class PostControllerTest {
     }
 
     @Test
-    public void testControllerUsesServiceToCreateAPost(){
+    public void posts_shouldReturnPostsRouteString_whenCalled(){
+        assertEquals("posts", postController.posts(model));
+    }
+
+    @Test
+    public void postsNew_shouldUseTheServiceToCreateANewPost_WhenCalled(){
         Post post = new Post();
         post.setTitle("Dummy Title");
         post.setContent("Dummy Content");
@@ -70,10 +75,6 @@ public class PostControllerTest {
         Mockito.verify(postService).createPost(post);
     }
 
-    @Test
-    public void posts_shouldReturnPostsRouteString_whenCalled(){
-        assertEquals("posts", postController.posts(model));
-    }
 
     @Test
     public void postsNew_shouldReturnNewRouteString_WhenCalled(){
