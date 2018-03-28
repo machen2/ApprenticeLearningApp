@@ -13,28 +13,23 @@ import java.util.List;
 @Controller
 public class PostController {
 
-    public List<Post> allPosts;
+    @Autowired
+    private PostService postService;
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public String posts(Model model) {
-        allPosts = getAllPosts();
+        List<Post> allPosts = postService.getAllPosts();
         model.addAttribute("postList", allPosts);
         return "posts";
     }
 
     @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
     public String postsNew() {
+        Post post = new Post();
+        post.setTitle("Dummy Title");
+        post.setContent("Dummy Content");
+        postService.createPost(post);
         return "new";
     }
 
-    @Autowired
-    private PostService postService;
-
-    public List<Post> getAllPosts() {
-         return postService.getAllPosts();
-    }
-
-    public Post getPostById(Long id) {
-        return postService.getPostById(id);
-    }
 }
