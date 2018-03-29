@@ -71,20 +71,22 @@ public class PostControllerTest {
         Post post = new Post();
         post.setTitle("Dummy Title");
         post.setContent("Dummy Content");
-        List<Post> expected = new ArrayList<>();
-        expected.add(post);
-        Mockito.when(postService.getAllPosts()).thenReturn(expected);
 
         postController.postsNew(model);
 
         Post actual = (Post) model.asMap().get("post");
 
-        assertEquals(expected.get(0), actual);
+        assertEquals(post, actual);
     }
 
     @Test
     public void postsNew_shouldReturnNewRouteString_WhenCalled(){
         assertEquals("new", postController.postsNew(model));
+    }
+
+    @Test
+    public void submitPost_ShouldReturnPostsRouteString_WhenCalled(){
+        assertEquals("posts", postController.submitPost());
     }
 
 }

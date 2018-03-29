@@ -5,6 +5,7 @@ import com.pillar.pillarLearningCenter.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +31,11 @@ public class PostController {
         dummyPost.setContent("Dummy Content");
         model.addAttribute("post", dummyPost);
         return "new";
+    }
+
+    @PostMapping("/posts/new")
+    public String submitPost() {
+        return "posts";
     }
 
 }
