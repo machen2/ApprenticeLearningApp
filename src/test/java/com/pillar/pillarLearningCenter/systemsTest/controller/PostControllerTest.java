@@ -86,7 +86,17 @@ public class PostControllerTest {
 
     @Test
     public void submitPost_ShouldReturnPostsRouteString_WhenCalled(){
-        assertEquals("posts", postController.submitPost());
+        Post post = new Post();
+        assertEquals("posts", postController.submitPost(post));
+    }
+
+    @Test
+    public void submitPost_ShouldUseServiceToCreatePost_WhenCalled(){
+        Post post = new Post();
+        post.setTitle("Dummy Title");
+        post.setContent("Dummy Content");
+        postController.submitPost(post);
+        Mockito.verify(postService).createPost(post);
     }
 
 }
