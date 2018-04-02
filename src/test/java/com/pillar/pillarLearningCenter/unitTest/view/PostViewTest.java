@@ -1,7 +1,8 @@
-package com.pillar.pillarLearningCenter.systemsTest.view;
+package com.pillar.pillarLearningCenter.unitTest.view;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pillar.pillarLearningCenter.controller.PostController;
-import com.pillar.pillarLearningCenter.service.PostService;
+import com.pillar.pillarLearningCenter.service.PostServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,23 +18,31 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PostController.class)
-public class CreatePostViewTest {
+public class PostViewTest {
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    PostService postServiceMock;
+    PostServiceImpl postServiceMock;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Test
-    public void testPostNewRouteLoadsSuccessfully() throws Exception {
-        mockMvc.perform(get("/posts/new"))
+    public void testPostRouteLoadsSuccessfullyWhenNoPostsArePresent() throws Exception {
+        mockMvc.perform(get("/posts"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void testViewHasSubmitButton(){
+    public void testPostsHtmlView(){
         TestExecutor testExecutor = new TestExecutor();
-        testExecutor.execute("classpath:posts/new.thtest");
+        testExecutor.execute("classpath:posts/posts.thtest");
         assertTrue(testExecutor.isAllOK());
     }
 }
+
+
+
+
+
