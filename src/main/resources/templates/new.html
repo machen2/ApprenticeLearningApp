@@ -1,6 +1,6 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <h1>Create a New Post!</h1>
-    <form>
+    <form action="#" th:action="@{/posts/new}" th:object="${post}" method="post">
         <input type="submit" value="Submit" />
     </form>
 </html>
