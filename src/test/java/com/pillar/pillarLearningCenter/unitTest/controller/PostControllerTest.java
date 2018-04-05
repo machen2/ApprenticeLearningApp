@@ -80,9 +80,9 @@ public class PostControllerTest {
     }
 
     @Test
-    public void submitPost_ShouldReturnPostsRouteString_WhenCalled(){
+    public void submitPost_ShouldReturnPostsRedirectString_WhenCalled(){
         Post post = new Post();
-        assertEquals("posts", postController.submitPost(post));
+        assertEquals("redirect:/posts", postController.submitPost(post));
     }
 
     @Test

@@ -37,7 +37,7 @@ public class PostController {
     @PostMapping("/posts/new")
     public String submitPost(@ModelAttribute Post post) {
         postService.createPost(post);
-        return "posts";
+        return "redirect:/posts";
     }
 
 }
