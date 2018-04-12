@@ -4,6 +4,8 @@
 <html>
     <h1>Create a New Post!</h1>
     <form action="/testing/posts/new" method="post">
-        <input type="submit" value="Submit" />
+        <input name="title" />
+        <input name="content" />
+        <input name="submit" type="submit" value="Submit" />
     </form>
 </html>

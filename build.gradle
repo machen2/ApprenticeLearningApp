@@ -41,3 +41,21 @@ dependencies {
 		exclude group: 'org.seleniumhq.selenium'
 	}
 }
+
+task bootRunTest(type: org.springframework.boot.gradle.tasks.run.BootRun, dependsOn: build) {
+	group= 'Application'
+	doFirst() {
+		main = bootJar.mainClassName
+		classpath = sourceSets.main.runtimeClasspath
+		systemProperty 'spring.profiles.active', 'test'
+	}
+}
+
+task bootRunProd(type: org.springframework.boot.gradle.tasks.run.BootRun, dependsOn: build) {
+	group= 'Application'
+	doFirst() {
+		main = bootJar.mainClassName
+		classpath = sourceSets.main.runtimeClasspath
+		systemProperty 'spring.profiles.active', 'prod'
+	}
+}
