@@ -4,14 +4,20 @@ import geb.junit4.GebTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
 @RunWith(JUnit4)
-@DataJpaTest
 class CreatePostTest extends GebTest {
+    //teardown method here
+    /*    @Autowired
+    private TestEntityManager entityManager;
+
+    private void teardown() {
+        List<Post> posts = entityManager.findAll()
+        posts.each { post -> entityManager.remove(post) }
+    }*/
 
     @Test
-    void postsNewView_ShouldRedirect_WhenSubmitButtonClicked() {
+    void postsNewView_ShouldCreateNewPostAndRedirect_WhenSubmitButtonClicked() {
         go "http://localhost:8080/posts/new"
 
         $("form").title = "New Title - in memory"
@@ -19,5 +25,8 @@ class CreatePostTest extends GebTest {
         $("input", value: "Submit").click()
 
         assert $("h1")[0].text() == "Posts"
+        assert $("div h1")[-1].text() == "New Title - in memory"
+        assert $("div p")[-1].text() == "Content here"
+        //teardown()
     }
 }
