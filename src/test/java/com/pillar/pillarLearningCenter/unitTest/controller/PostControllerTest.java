@@ -62,16 +62,16 @@ public class PostControllerTest {
     }
 
     @Test
-    public void postsNew_ShouldPopulateModelWithDummyPostData_WhenCalled() {
+    public void postsNew_ShouldPopulateModelWithEmptyPost_WhenCalled() {
         Post post = new Post();
-        post.setTitle("Dummy Title");
-        post.setContent("Dummy Content");
 
         postController.postsNew(model);
 
         Post actual = (Post) model.asMap().get("post");
 
-        assertEquals(post, actual);
+        assertEquals(post.getId(), actual.getId());
+        assertEquals(post.getTitle(), actual.getTitle());
+        assertEquals(post.getContent(), actual.getContent());
     }
 
     @Test

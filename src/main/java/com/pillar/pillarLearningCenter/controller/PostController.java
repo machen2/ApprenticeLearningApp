@@ -5,10 +5,7 @@ import com.pillar.pillarLearningCenter.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,19 +15,16 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    @GetMapping("/posts")
     public String posts(Model model) {
         List<Post> allPosts = postService.getAllPosts();
         model.addAttribute("postList", allPosts);
         return "posts";
     }
 
-    @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
+    @GetMapping("/posts/new")
     public String postsNew(Model model) {
-        Post dummyPost = new Post();
-        dummyPost.setTitle("Dummy Title");
-        dummyPost.setContent("Dummy Content");
-        model.addAttribute("post", dummyPost);
+        model.addAttribute("post", new Post());
         return "new";
     }
 
