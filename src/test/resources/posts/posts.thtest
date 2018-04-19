@@ -9,6 +9,7 @@ postList = {postOne, postTwo}
 %INPUT (classpath:templates/posts.html)
 %OUTPUT
 <html>
+    <h1>Posts</h1>
     <div>
         <h1>Title</h1>
         <p>Content</p>

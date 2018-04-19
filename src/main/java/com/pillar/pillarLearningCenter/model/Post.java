@@ -8,10 +8,13 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "title")
     public String title;
 
+    @Column(name = "content")
     public String content;
 
     public void setTitle(String title) {
@@ -36,5 +39,19 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Post)) {
+            return false;
+        }
+
+        Post post2 = (Post) o;
+        return post2.getId() == this.getId() && post2.getTitle().equals(this.getTitle()) && post2.getContent().equals(this.getContent());
     }
 }

@@ -5,36 +5,33 @@ import com.pillar.pillarLearningCenter.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 public class PostController {
 
-    public List<Post> allPosts;
+    @Autowired
+    private PostService postService;
 
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    @GetMapping("/posts")
     public String posts(Model model) {
-        allPosts = getAllPosts();
+        List<Post> allPosts = postService.getAllPosts();
         model.addAttribute("postList", allPosts);
         return "posts";
     }
 
-    @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
-    public String postsNew() {
+    @GetMapping("/posts/new")
+    public String postsNew(Model model) {
+        model.addAttribute("post", new Post());
         return "new";
     }
 
-    @Autowired
-    private PostService postService;
-
-    public List<Post> getAllPosts() {
-         return postService.getAllPosts();
+    @PostMapping("/posts/new")
+    public String submitPost(@ModelAttribute Post post) {
+        postService.createPost(post);
+        return "redirect:/posts";
     }
 
-    public Post getPostById(Long id) {
-        return postService.getPostById(id);
-    }
 }
